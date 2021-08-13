@@ -1,0 +1,12 @@
+{
+ "funcionario1": {
+  "nome": "Luiz Pereira",
+  "idade": "35",
+  "profissão": "agricultor"
+ },
+ "funcionario2": {
+  "nome": "Maria José",
+  "idade": "42",
+  "profissão": "Engenheira Agronoma"
+ }
+}
