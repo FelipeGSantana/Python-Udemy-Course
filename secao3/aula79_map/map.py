@@ -1,4 +1,4 @@
-from udemy.secao3.dados import produtos, pessoas
+from Udemy.secao3.dados import produtos, pessoas
 
 # só retortana o preço dos produtos
 novos_produtos = map(lambda p: p['preco'] * 1.05, produtos)
