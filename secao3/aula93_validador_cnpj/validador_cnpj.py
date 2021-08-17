@@ -6,30 +6,29 @@ primeiro dígito 11 - (somadosprodutos % 11)
 
 """
 
-cnpj = [0, 4, 2, 5, 2, 0, 1, 1, 0, 0, 0, 1, 1, 0]
-cnpj_temporario = cnpj[0:-2]
-lista_primeiro_digito = [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2]
-lista_segundo_digito = [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2]
+
+LISTA_DIGITOS = [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2]
 produto = []
 
-for num1, num2 in zip(cnpj_temporario, lista_primeiro_digito):
-    produto.append(num1 * num2)
-digito1 = 11 - (sum(produto) % 11)
-if digito1 > 9:
-    digito1 = 0
+cnpj_input = input('Digite o CNPJ sem pontuação: \n')
+CNPJ = [int(num) for num in cnpj_input]
+cnpj_temporario = CNPJ[0:-2]
 
-cnpj_temporario.append(digito1)
 
-for num1, num2 in zip(cnpj_temporario, lista_segundo_digito):
-    produto.append(num1 * num2)
-digito2 = 11 - (sum(produto) % 11)
-if digito2 > 9:
-    digito2 = 0
+def calcula(cnpj_temporario, LISTA_DIGITOS):
+    for num1, num2 in zip(cnpj_temporario, LISTA_DIGITOS):
+        produto.append(num1 * num2)
+    digito = 11 - (sum(produto) % 11)
+    if digito > 9:
+        digito = 0
+    cnpj_temporario.append(digito)
 
-cnpj_temporario.append(digito2)
-print(cnpj)
+calcula(cnpj_temporario, LISTA_DIGITOS[1:])
+calcula(cnpj_temporario, LISTA_DIGITOS)
+print(CNPJ)
 print(cnpj_temporario)
-if cnpj == cnpj_temporario:
+
+if CNPJ == cnpj_temporario:
     print('VÁLIDO')
 else:
     print('INVÁLIDO')
