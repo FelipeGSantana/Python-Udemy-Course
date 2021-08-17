@@ -33,4 +33,7 @@ for cnpjs in cnpjs:
         e_valido = 'VÁLIDO'
     else:
         e_valido = 'INVÁLIDO'
-    print(f'CNPJ: {CNPJ} é {e_valido} | Correção: {cnpjs[1]}')
+    cnpj_str = [str(num) for num in CNPJ]
+    cnpj_final = ''.join(cnpj_str)
+
+    print(f'CNPJ: {cnpj_final} é {e_valido} | Correção: {cnpjs[1]}')
