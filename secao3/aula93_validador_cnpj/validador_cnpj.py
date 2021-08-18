@@ -1,20 +1,17 @@
 """
 0 4 2 5 2 0 1 1 / 0 0 0 1 - 10
-04252011000110
+04.252.011/0001-10
 5 4 3 2 9 8 7 6   5 4 3 2
 6 5 4 3 2 9 8 7   6 5 4 3   2
 primeiro dígito 11 - (somadosprodutos % 11)
 
 """
 
-
-
 produto = []
 
 cnpj_input = input('Digite o CNPJ sem pontuação: \n')
 CNPJ = [int(num) for num in cnpj_input]
 cnpj_temporario = CNPJ[0:-2]
-
 
 def calcula(cnpj_temporario):
     if len(cnpj_temporario) == 12:

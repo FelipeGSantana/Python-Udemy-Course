@@ -19,8 +19,7 @@ for cnpjs in cnpjs:
             lista_dígitos = [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2]
 
         # Fiding digit
-        produto = [num1*num2 for num1,
-                   num2 in zip(cnpj_temporario, lista_dígitos)]
+        produto = [num1*num2 for num1, num2 in zip(cnpj_temporario, lista_dígitos)]
         digito = 11 - (sum(produto) % 11)
 
         # Verifying validity digit
