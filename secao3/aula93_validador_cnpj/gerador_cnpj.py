@@ -1,6 +1,7 @@
+import json
 from json.decoder import JSONDecodeError
 from random import randint
-from json import dumps, loads
+
 
 
 def digit_calc():
@@ -15,7 +16,7 @@ def digit_calc():
         else:
             lista_dígitos = [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2]
 
-        # Fiding digit
+        # Finding digit
         produto = [num1*num2 for num1, num2 in zip(numbers, lista_dígitos)]
         digito = 11 - (sum(produto) % 11)
 
@@ -26,32 +27,33 @@ def digit_calc():
 
     return numbers # returning as list
 
-
+# generate cnpjs
 def multiple_generation(quantity):
     cnpj_dict = {}
     for _ in range(quantity):
         list_numbers = digit_calc()
         cnpj_str = [str(num) for num in list_numbers]
-        CNPJ = ''.join(cnpj_str)
-        cnpj_dict[CNPJ] = 'Valid'
+        new_cnpj = ''.join(cnpj_str)
+        cnpj_dict[new_cnpj] = 'Valid'
     return cnpj_dict
 
-def write_dict(dict):
-    # dict_json = dumps(dict, indent = True, ensure_ascii=False)
-    with open('cnpj_generated.json', 'w+', encoding='utf8') as file:
-        existing_data = file.read() #reading
-        
+
+# Save all generated cnpjs
+def write_dict(dictionary):
+    with open('json_data/cnpj_generated.json', 'r+') as file:
+        # Verify existing data and update
         try:
-            existing_data = loads(existing_data) #converting to dict
-            updated = existing_data.update(dict) #adding dict
-            new_data = dumps(updated, indent = True, ensure_ascii=False)
+            open_data = json.load(file)
+            open_data.update(dictionary)
+            file.seek(0)
         except JSONDecodeError:
-            new_data = dumps(dict, indent = True, ensure_ascii=False)
+            open_data = dictionary
 
-        file.write(new_data)
-        
+        #Write update
+        json.dump(open_data, file, indent=2)
+        print('Salvo com sucesso!')
 
-cnpjs = multiple_generation(10)
+cnpjs = multiple_generation(100)
 write_dict(cnpjs)
 
 
