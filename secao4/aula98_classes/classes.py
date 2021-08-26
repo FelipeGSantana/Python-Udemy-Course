@@ -1,10 +1,14 @@
+"""
+Classes são moldes de objetos que tem atributos, quando instanciado cada objeto gerado por esse molde leva esses atributos
+"""
 class Pessoa:
 
     def __init__(self, nome, idade, comendo= False, falando=True):
         self.nome = nome
         self.idade = idade
         self.comendo = comendo
-        self.falando = falando
+        self.falando = falando # Variaveis definidas de forma golbal na classe
+        variavel_local = "Exemplo de váriavel local"
 
     def falar(self, assunto):
         if self.falando:
