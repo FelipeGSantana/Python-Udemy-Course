@@ -1,14 +1,16 @@
 """
 Classes são moldes de objetos que tem atributos, quando instanciado cada objeto gerado por esse molde leva esses atributos
+Nome sempre com iniciado com maiúscula seguindo o PascalCase
 """
 class Pessoa:
+    variavel_global = "Exemplo de variável global"
 
-    def __init__(self, nome, idade, comendo= False, falando=True):
+    def __init__(self, nome, idade, comendo= False, falando=True): # Construtor
         self.nome = nome
         self.idade = idade
         self.comendo = comendo
-        self.falando = falando # Variaveis definidas de forma golbal na classe
-        variavel_local = "Exemplo de váriavel local"
+        self.falando = falando # variável da instância que pode ser usada em outras funções
+        variavel_local = "Exemplo de variável local"
 
     def falar(self, assunto):
         if self.falando:
